@@ -5,12 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/person")
+@RequestMapping("/payment")
 @RestController
-public class PersonController {
+public class PersonController1 {
     private final PersonService personService;
 
-    public PersonController(PersonService personService) {
+    public PersonController1(PersonService personService) {
         this.personService = personService;
     }
 
@@ -33,5 +33,9 @@ public class PersonController {
     public ResponseEntity<String>create(@Valid @RequestBody Person person) {
         personService.savePerson(person);
         return new ResponseEntity<>("Person created successfully", HttpStatus.OK);
+    }
+    @PostMapping
+    public String makePayment(@RequestBody Person person){
+        return "You have called Microservice 2";
     }
 }
